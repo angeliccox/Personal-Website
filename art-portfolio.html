@@ -1,0 +1,102 @@
+x<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Portfolio | Angelic Cox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Angelic Cox</a>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </header>
+
+    <section class="page-header">
+        <h1 class="page-title">Art Portfolio</h1>
+        <p class="page-subtitle">
+          Check out more artworks at <a href="https://www.instagram.com/ajcxart/" target="_blank" class="text-link">@ajcxart</a> on Instagram. Digital paintings mostly using Photoshop & Procreate.
+        </p>
+    </section>
+
+    <section class="gallery">
+        <div class="gallery-grid">
+         
+            
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/Image 1.png" alt="Portal Reimagined">
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">Portal Reimagined</h3>
+                    <p class="gallery-item-meta">Digital, Photoshop • 2025</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/image 2.png" alt="Gilman Emo Night Poster">
+
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">Gilman Emo Night Poster</h3>
+                    <p class="gallery-item-meta">Digital, Photoshop • 2025</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/image 3.jpeg" alt="Sticker Design">
+
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">Sticker Design on Guitar</h3>
+                    <p class="gallery-item-meta">Digital drawing on sticker • 2025</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/image 4.png" alt="Woman playing Synth">
+         
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">Synthesizer</h3>
+                    <p class="gallery-item-meta">Digital, procreate • 2025</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/image 5.png" alt="Djo Sticker Design">
+       
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">Djo Sticker Design</h3>
+                    <p class="gallery-item-meta">Digital, procreate • 2025</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/image 6.png" alt="portrait">
+ 
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">Portrait</h3>
+                    <p class="gallery-item-meta">Digital, procreate • 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox for enlarged view -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+            <img src="" alt="" id="lightbox-image">
+            <div class="lightbox-caption">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-meta"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-copyright">© 2025 Angelic Cox. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
