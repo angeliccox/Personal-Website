@@ -65,6 +65,104 @@
     cursor: pointer;
 }
 
+/* Project Image Gallery (for multiple images) */
+.project-image-gallery {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    background: var(--bg-secondary);
+}
+
+.gallery-main {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    cursor: pointer;
+}
+
+.gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-main:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-main .project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-main:hover .project-overlay {
+    opacity: 1;
+}
+
+.gallery-thumb {
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    cursor: pointer;
+    border-left: 1px solid var(--border);
+}
+
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-thumb:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-thumb .project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-thumb:hover .project-overlay {
+    opacity: 1;
+}
+
+.gallery-thumb .view-project {
+    font-size: 0.65rem;
+    text-align: center;
+    padding: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .project-image-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+    
+    .gallery-thumb {
+        width: 100%;
+        height: 80px;
+        border-left: none;
+        border-top: 1px solid var(--border);
+    }
+}
+
 .project-image img {
     width: 100%;
     height: 100%;
@@ -241,6 +339,286 @@
     background: transparent;
     color: var(--text);
     box-shadow: inset 0 0 0 1px var(--text);
+}
+
+/* Award Badge */
+.award-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    border: 1px solid var(--border-dark);
+    padding: 0.4rem 0.85rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+/* Skills Legend */
+.skills-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.legend-item strong {
+    color: var(--text);
+}
+
+/* ========================================
+   PDF Viewer Modal
+   ======================================== */
+.pdf-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.pdf-modal.active {
+    display: flex;
+}
+
+.pdf-modal-content {
+    width: 100%;
+    max-width: 1100px;
+    height: 90vh;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.pdf-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.pdf-modal-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.pdf-modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pdf-download-btn {
+    padding: 0.5rem 1rem;
+    background: var(--text);
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.pdf-download-btn:hover {
+    background: transparent;
+    color: var(--text);
+    box-shadow: inset 0 0 0 1px var(--text);
+}
+
+.pdf-close-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 1.25rem;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.pdf-close-btn:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.pdf-viewer-container {
+    flex: 1;
+    overflow: hidden;
+    background: #525659;
+}
+
+.pdf-viewer-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Mobile adjustments for PDF viewer */
+@media (max-width: 768px) {
+    .pdf-modal {
+        padding: 0;
+    }
+    
+    .pdf-modal-content {
+        height: 100vh;
+        max-width: 100%;
+    }
+    
+    .pdf-modal-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .pdf-modal-header h3 {
+        font-size: 0.9rem;
+    }
+    
+    .pdf-download-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.65rem;
+    }
+}
+
+
+/* ========================================
+   PDF Viewer Modal
+   ======================================== */
+
+.pdf-viewer-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.pdf-viewer-modal.active {
+    display: flex;
+}
+
+.pdf-viewer-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 90vh;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+}
+
+.pdf-viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+}
+
+.pdf-viewer-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text);
+}
+
+.pdf-viewer-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pdf-download-btn {
+    padding: 0.5rem 1rem;
+    background: var(--text);
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.pdf-download-btn:hover {
+    background: transparent;
+    color: var(--text);
+    box-shadow: inset 0 0 0 1px var(--text);
+}
+
+.pdf-close-btn {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    line-height: 1;
+    transition: opacity 0.3s ease;
+}
+
+.pdf-close-btn:hover {
+    opacity: 0.6;
+}
+
+.pdf-viewer-content {
+    flex: 1;
+    overflow: hidden;
+}
+
+.pdf-viewer-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .pdf-viewer-modal {
+        padding: 0;
+    }
+
+    .pdf-viewer-container {
+        height: 100vh;
+        max-width: 100%;
+    }
+
+    .pdf-viewer-header {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    .pdf-viewer-header h3 {
+        font-size: 1rem;
+    }
 }
 
 

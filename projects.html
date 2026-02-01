@@ -36,6 +36,55 @@
         </div>
         
         <div class="projects-grid">
+            <!-- Impossible Foods Project -->
+            <article class="project-card">
+                <div class="project-image-gallery">
+                    <div class="gallery-main" onclick="openProjectLightbox('impossiblefoods.png', 'Impossible Foods: Normalization Study', 'Marketing Consumer Insights • UC Berkeley • 2025')">
+                        <img src="impossiblefoods.png" alt="Impossible Foods Normalization Presentation">
+                        <div class="project-overlay">
+                            <span class="view-project">Click to View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-thumb" onclick="openProjectLightbox('impossiblefoods-winner.png', 'Best Project Award Announcement', 'Congratulations from Professor William Fanning • December 2025')">
+                        <img src="impossiblefoods-winner.png" alt="Best Project Award Announcement">
+                        <div class="project-overlay">
+                            <span class="view-project">🏆 Winner</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-meta">
+                        <span class="project-type">Marketing Research</span>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <div class="award-badge">🏆 Best Project Award</div>
+                    <h3 class="project-title">Impossible Foods: Normalization</h3>
+                    <p class="project-subtitle">Consumer Behavior & Market Research</p>
+                    <p class="project-description">
+                        A comprehensive consumer research study exploring how plant-based meat alternatives 
+                        become "normalized" in everyday consumption. Conducted in-depth 1-on-1 video interviews, 
+                        analyzed key consumer insights, and developed strategic recommendations for Impossible Foods 
+                        to broaden their consumer base through workplace cafeterias and college dining halls.
+                    </p>
+                    <div class="project-contributions">
+                        <span class="contribution-label">My Role</span>
+                        <ul class="contribution-list">
+                            <li>Conducted consumer video interviews</li>
+                            <li>Analyzed key phrases & insights</li>
+                            <li>Designed presentation in Canva</li>
+                            <li>Presented findings (15-min presentation)</li>
+                        </ul>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Consumer Research</span>
+                        <span class="tag">Market Analysis</span>
+                        <span class="tag">Canva</span>
+                        <span class="tag">Presentation Design</span>
+                    </div>
+                    <button onclick="openPDFViewer()" class="project-link">View Full Presentation →</button>
+                </div>
+            </article>
+
             <!-- Oakland Native Giveback Project -->
             <article class="project-card">
                 <div class="project-image" onclick="openProjectLightbox('ongbfinal.png', 'Oakland Native Giveback', 'Student Absenteeism Research Poster • 2024')">
@@ -105,7 +154,7 @@
                         </ul>
                     </div>
                     <div class="project-tags">
-                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">WordPress</span>
                         <span class="tag">Social Media</span>
                         <span class="tag">Digital Humanities</span>
                         <span class="tag">Content Strategy</span>
@@ -149,7 +198,6 @@
                     </li>
                 </ul>
             </div>
-
             <div class="skill-category">
                 <h3 class="skill-category-title">Research & Analysis</h3>
                 <ul class="skill-list">
@@ -175,7 +223,6 @@
                     </li>
                 </ul>
             </div>
-
             <div class="skill-category">
                 <h3 class="skill-category-title">Communication & Design</h3>
                 <ul class="skill-list">
@@ -204,7 +251,7 @@
         </div>
     </section>
 
-    <!-- Lightbox for enlarged view -->
+    <!-- Lightbox for enlarged images -->
     <div class="lightbox" id="projectLightbox" onclick="closeProjectLightbox(event)">
         <div class="lightbox-content" onclick="event.stopPropagation()">
             <button class="lightbox-close" onclick="closeProjectLightbox(event)">✕</button>
@@ -212,6 +259,22 @@
             <div class="lightbox-caption">
                 <h3 id="lightbox-title"></h3>
                 <p id="lightbox-meta"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Viewer Modal -->
+    <div class="pdf-modal" id="pdfModal" onclick="closePDFViewer(event)">
+        <div class="pdf-modal-content" onclick="event.stopPropagation()">
+            <div class="pdf-modal-header">
+                <h3>Impossible Foods: Normalization Study</h3>
+                <div class="pdf-modal-actions">
+                    <a href="Normalization_Impossible_Foods.pdf" download class="pdf-download-btn">Download PDF</a>
+                    <button class="pdf-close-btn" onclick="closePDFViewer(event)">✕</button>
+                </div>
+            </div>
+            <div class="pdf-viewer-container">
+                <iframe id="pdfFrame" src="" frameborder="0"></iframe>
             </div>
         </div>
     </div>
@@ -236,10 +299,24 @@
             document.body.style.overflow = '';
         }
 
+        // PDF Viewer functionality
+        function openPDFViewer() {
+            document.getElementById('pdfFrame').src = 'Normalization_Impossible_Foods.pdf';
+            document.getElementById('pdfModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePDFViewer(event) {
+            document.getElementById('pdfModal').classList.remove('active');
+            document.getElementById('pdfFrame').src = '';
+            document.body.style.overflow = '';
+        }
+
         // Close on escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeProjectLightbox();
+                closePDFViewer();
             }
         });
     </script>
